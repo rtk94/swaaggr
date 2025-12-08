@@ -1,0 +1,19 @@
+services:
+  swaaggr:
+    build: .
+    container_name: swaaggr
+    restart: always
+
+    # Map the local 'data' folder to the container's internal
+    # 'data' folder, ensuring logs persist on the host machine.
+    volumes:
+      - ./data:/var/www/html/data
+
+    # Connect to the external network so Nginx Proxy Manager can see the container.
+    networks:
+      - npm_public
+
+# Define the network explicitly as internal
+networks:
+  npm_public:
+    external: true

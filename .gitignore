@@ -1,0 +1,6 @@
+# Ignore the data directory (where the logs live)
+data/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
