@@ -1,7 +1,7 @@
 <?php
 // 1. CORS Headers
 // Allows your main website to send data to this specific tracking server.
-header('Access-Control-Allow-Origin: https://rknepp.com');
+header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: POST, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
 header('Content-Type: application/json');
