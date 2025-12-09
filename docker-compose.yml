@@ -1,17 +1,31 @@
 services:
+  # The Analytics App
   swaaggr:
     build: .
     container_name: swaaggr
     restart: always
-
-    # Map the local 'data' folder to the container's internal
-    # 'data' folder, ensuring logs persist on the host machine.
     volumes:
       - ./data:/var/www/html/data
-
-    # Connect to the external network so Nginx Proxy Manager can see the container.
     networks:
       - npm_public
+
+  # The GitHub Action Listener
+  runner:
+    image: myoung34/github-runner:latest
+    restart: always
+    environment:
+      # Populated via .env file
+      REPO_URL: ${REPO_URL}
+      RUNNER_TOKEN: ${RUNNER_TOKEN}
+      RUNNER_NAME: ${RUNNER_NAME}
+      RUNNER_LABELS: ${RUNNER_LABELS}
+      # Prevent mid-job updates & restarts
+      DISABLE_AUTO_UPDATE: "true"
+    volumes:
+      # Allows the runner to control Docker on the host
+      - /var/run/docker.sock:/var/run/docker.sock
+      # Allows the runner to see/edit project source code
+      - ./:app
 
 # Define the network explicitly as internal
 networks:
