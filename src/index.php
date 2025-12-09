@@ -40,7 +40,7 @@
         <h1>SWAAGGR : Self-Hosted Web Analytics Aggregator</h1>
         <ul>
             <li><b>Current Status:</b> Active</li>
-            <li><b>Server Time:</b> <?php echo date('Y-m-d H:i:s'); ?>
+            <li><b>Server Time:</b> <?php echo date('Y-m-d H:i:s'); ?></li>
         </ul>
     </body>
 </html>
