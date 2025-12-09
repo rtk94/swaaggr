@@ -25,7 +25,7 @@ services:
       # Allows the runner to control Docker on the host
       - /var/run/docker.sock:/var/run/docker.sock
       # Allows the runner to see/edit project source code
-      - ./:app
+      - ./:/app
 
 # Define the network explicitly as internal
 networks:
